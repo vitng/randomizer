@@ -29,37 +29,7 @@
 //  }
 //];
 
-let colors = [{
-    name: "WHITE",
-  }, {
-    name: "RED"
-  }, {
-    name: "YELLOW "
-  }, {
-    name: "BLUE"
-  }, {
-    name: "BLACK"
-  },
-  {
-    name: "BROWN"
-  },
-  {
-    name: "GRAY"
-  },
-  {
-    name: "PURPLE"
-  },
-  {
-    name: "ORANGE "
-  },
-
-  {
-    name: "GREEN"
-  },
-  {
-    name: "PINK"
-  }
-];
+let colors ;
 // color :" white", meaning: "pure..."
 
 let randomIndex;
@@ -67,17 +37,18 @@ let animating = false;
 let imgs = [];
 let imageCounter = 0;
 let button;
-
+let gamebackground;
 function preload() {
-  for (let i = 0, i <= 18; i++) {
-    imgs[i] = loadImage(`colorcards/img${i}.jpg`)
+  for (let i = 0; i <= 17; i++) {
+    imgs[i] = loadImage(`colorcards/img${i+1}.jpg`)
 
   }
-}
+  gamebackground = loadImage('colorcards/randomizer.jpg');
 }
 
+
 function setup() {
-  createCanvas(1000, 1000);
+  createCanvas(500, 500);
   background(200);
   textSize(32);
 
@@ -91,11 +62,18 @@ function setup() {
   //colors.push("mint");
   //colors.shift();
   //colors.unshift();
-  text("Hi there !!!", 50, 50);
+  fill ('red');
+  text("Choose your color ⁂𓃱𑁍 !!!", 60, 60);
+
+  textStyle(BOLDITALIC);
+
   setTimeout(changeBackground, 1000);
   button = createButton("Play");
+
+  button.class('mybuttonclass');
+  // button.position (windowWidth / 2, windowHeight - 280);
   button.mousePressed(buttonPressed);
-  image(img, 0, 0, 100, 100);
+  // image(imgs[0], width/2, height/2, 200, 200);
 }
 
 
@@ -106,7 +84,7 @@ function draw() {
     clear();
 
 
-    if (imageCounter < imgs.length - 1) {}
+    if (imageCounter < imgs.length - 1) {
     imageCounter++;
   } else {
 
@@ -114,30 +92,36 @@ function draw() {
   }
 }
 
+    console.log(imageCounter);
+    image(imgs[imageCounter], width/2, height/2, 200, 200);
+}
+
 function randomizer() {
   animating = false;
-  t
-  if (colors[0]) {
 
-    //function changeBackground() {
-    //  background(random(255), random(255), random(255));
-    //}
+  // if (colors[0]) {
+
+
     background(random(200, 250));
-    randomIndex = int(random(colors.length));
-    text(colors[randomIndex].name, 50, 50, 950, 950);
+    randomIndex = int(random(0, 255));
+    // text(randomIndex, 50, 50, 950, 950);
 
-    image(random(imgs), width / 2, height / 2);
+    image(imgs[round(random(0, imgs.length - 1))], width / 2, height / 2,200, 200);
 
-    colors.splice(randomIndex, 1);
-  } else {
-    background(random(200, 255));
-    text("nothing left!", 80, 80);
-
-  }
+    // colors.splice(randomIndex, 1);
+  // } else {
+  //   background(random(200, 255));
+  //   text("nothing left!", 80, 80);
+  //
+  // }
 }
 
 function buttonPressed() {
   animating = true;
   setTimeout(randomizer, 2000);
 
+}
+
+function changeBackground() {
+background(random(255), random(255), random(255));
 }

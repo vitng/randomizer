@@ -1,7 +1,28 @@
 html, body {
   margin: 0;
   padding: 0;
+  background-image: url('colorcards/randomizer.jpg');
 }
 canvas {
   display: block;
+  position: relative;
+  margin:0 auto;
+}
+
+.centermytitle {
+  display: block;
+  width:100%;
+  text-align: center;
+}
+.mybuttonclass {
+
+  display: block;
+  position: fixed;
+  background-color: #000;
+  color: #FFF;
+  border:0;
+  padding:15px;
+  bottom:250px;
+  left:50%;
+  transform: translateX(-50%);
 }
