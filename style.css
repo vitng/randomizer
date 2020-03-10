@@ -8,11 +8,18 @@ canvas {
   position: relative;
   margin:0 auto;
 }
+.centermytext1{
+  display: blocks;
+  width : 100%;
+  text-align: center;
+  background-color: #f1f2da;
+}
 
 .centermytitle {
   display: block;
   width:100%;
   text-align: center;
+
 }
 .mybuttonclass {
 
@@ -22,7 +29,7 @@ canvas {
   color: #FFF;
   border:0;
   padding:15px;
-  bottom:250px;
+  bottom:150px;
   left:50%;
   transform: translateX(-50%);
 }
